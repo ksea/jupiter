@@ -48,7 +48,7 @@ class SendEmail:
         @return:
         """
         email = config.email.send_list
-        user_list = email.split(',')  # 多个邮箱发送，config文件中直接添加  'test@16.com'
+        user_list = email.split(',')  # 多个邮箱发送，config文件中直接添加  'test@163.com'
 
         sub = config.project_name + "接口自动化执行异常通知"
         content = f"自动化测试执行完毕，程序中发现异常，请悉知。报错信息如下：\n{error_message}"
