@@ -12,7 +12,7 @@ import json
 from typing import Dict, Text
 from jsonpath import jsonpath
 from utils.requests_tool.request_handler import RequestHandler
-from utils.read_files_tools.request_handler import cache_regular, sql_regular, regular
+from utils.read_files_tools.regular_handler import cache_regular, sql_regular, regular
 from utils.other_tools.jsonpath_date_replace import jsonpath_replace
 from utils.mysql_tool.mysql_handler import MysqlDB
 from utils.logging_tool.log_handler import WARNING

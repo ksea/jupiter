@@ -5,7 +5,7 @@ env: 测试环境
 tester_name: tzy
 
 # 域名1
-host: https://www.wanandroid.com
+host: https://ifs-app.qa.us.fiture.com
 # 域名2，支持多个域名配置
 app_host:
 
