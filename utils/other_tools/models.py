@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# @Time    : 2022/12/1  16:55
+# @Author  : tzy
+# @FileName: models.py
+"""
+    Description:
+        
+"""
 import types
 from enum import Enum, unique
 from typing import Text, Dict, Callable, Union, Optional, List, Any
@@ -113,8 +122,8 @@ class TestCase(BaseModel):
     assert_data: Union[Dict, Text]
     headers: Union[None, Dict, Text] = {}
     requestType: Text
-    is_run: Union[None, bool] = None
-    data: Union[Dict, None, Text, List] = None
+    is_run: Union[None, bool, Text] = None
+    data: Any = None
     dependence_case: Union[None, bool] = False
     dependence_case_data: Optional[Union[None, List["DependentCaseData"], Text]] = None
     sql: List = None
@@ -128,10 +137,10 @@ class TestCase(BaseModel):
 
 class ResponseData(BaseModel):
     url: Text
-    is_run: Union[None, bool]
+    is_run: Union[None, bool, Text]
     detail: Text
     response_data: Text
-    request_body: Union[None, Dict, List]
+    request_body: Any
     method: Text
     sql_data: Dict
     yaml_data: "TestCase"
@@ -142,7 +151,7 @@ class ResponseData(BaseModel):
     status_code: int
     teardown: List["TearDown"] = None
     teardown_sql: Union[None, List]
-    body: Union[Dict, None, List] = None
+    body: Any
 
 
 class DingTalk(BaseModel):
@@ -185,6 +194,8 @@ class Config(BaseModel):
     real_time_update_test_cases: bool = False
     host: Text
     app_host: Union[Text, None]
+    access_key_id: Text
+    access_key_security: Text
 
 
 @unique

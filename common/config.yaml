@@ -9,6 +9,9 @@ host: https://www.wanandroid.com
 # 域名2，支持多个域名配置
 app_host:
 
+access_key_id: "K19IgxLx62185gthjUM4ac7mfaoqsPl3"
+access_key_security: "ybwLjBdGl89jr7m3eVEmkEXTTC8sX41w"
+
 # 实时更新用例内容，False时，已生成的代码不会在做变更
 # 设置为True的时候，修改yaml文件的用例，代码中的内容会实时更新
 real_time_update_test_cases: False

@@ -1,0 +1,45 @@
+# 公共参数
+case_common:
+  allureEpic: ifs-api
+  allureFeature: 登陆
+  allureStory: 登陆
+
+ifs_sso_email_login_01:
+    host: ${{host()}}
+    url: /sso/email/login
+    method: POST
+    detail: 登陆
+    headers:
+      _APP_CLIENT_OBJECT:
+        appKey: "00100400123110000112111111111111"
+        timezone: "UTC-05:00"
+      Content-Type: application/json;
+#      Content-Type: multipart/form-data;
+      # 这里cookie的值，写的是存入缓存的名称
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      email: wen38@test.com
+      password: test123!
+    # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+    # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+#      # 断言接口状态码
+#      errorCode:
+#      # 断言接口状态码
+#        jsonpath: $.errorCode
+#        type: ==
+#        value: -1001
+#        AssertType:
+#      errorMsg:
+#        jsonpath: $.errorMsg
+#        type: ==
+#        value: '请先登录！'
+#        AssertType:
+    sql:
+
