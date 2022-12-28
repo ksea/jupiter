@@ -1,18 +1,15 @@
 # 公共参数
 case_common:
-  allureEpic: ifs-api
+  allureEpic: tzy-api
   allureFeature: 登陆
   allureStory: 登陆
 
-ifs_sso_email_login_01:
-    host: ${{app_host()}}
-    url: /sso/email/login
-    method: POST
+tzy_sso_email_login_01:
+    host: ${{host()}}
+    url: /openapi/v1/stp/user/devices/vurl
+    method: PUT
     detail: 登陆
     headers:
-      _APP_CLIENT_OBJECT:
-        appKey: "00100400123110000112111111111111"
-        timezone: "UTC-05:00"
       Content-Type: application/json;
 #      Content-Type: multipart/form-data;
       # 这里cookie的值，写的是存入缓存的名称
@@ -21,8 +18,8 @@ ifs_sso_email_login_01:
     # 是否执行，空或者 true 都会执行
     is_run:
     data:
-      email: wen38@fiture.com
-      password: test123!
+      sn: "4ad15df4-03cd708e"
+      config_id: 1
     # 是否有依赖业务，为空或者false则表示没有
     dependence_case: False
     # 依赖的数据
@@ -41,9 +38,5 @@ ifs_sso_email_login_01:
 #        type: ==
 #        value: '请先登录！'
 #        AssertType:
-    current_request_set_cache:
-      - type: response
-        jsonpath: $.content.authentication
-        # 自定义的缓存名称
-        name: authentication_info
     sql:
+

@@ -1,19 +1,18 @@
 # 公共参数
 case_common:
-  allureEpic: ifs-api
-  allureFeature: 登陆
-  allureStory: 登陆
+  allureEpic: biz-portal-api
+  allureFeature: Taurus
+  allureStory: 课程
 
-ifs_sso_email_login_01:
-    host: ${{app_host()}}
-    url: /sso/email/login
+biz_portal_content_01:
+    host: ${{app_host1()}}
+    url: /taurus/content/detail
     method: POST
-    detail: 登陆
+    detail: 课程详情
     headers:
-      _APP_CLIENT_OBJECT:
-        appKey: "00100400123110000112111111111111"
-        timezone: "UTC-05:00"
-      Content-Type: application/json;
+      _SESSION_OBJECT: $cache{session_object}
+      Accept: application/json
+      Content-Type: application/json
 #      Content-Type: multipart/form-data;
       # 这里cookie的值，写的是存入缓存的名称
     # 请求的数据，是 params 还是 json、或者file、data
@@ -21,8 +20,7 @@ ifs_sso_email_login_01:
     # 是否执行，空或者 true 都会执行
     is_run:
     data:
-      email: wen38@fiture.com
-      password: test123!
+      contentId: 620
     # 是否有依赖业务，为空或者false则表示没有
     dependence_case: False
     # 依赖的数据
@@ -41,9 +39,4 @@ ifs_sso_email_login_01:
 #        type: ==
 #        value: '请先登录！'
 #        AssertType:
-    current_request_set_cache:
-      - type: response
-        jsonpath: $.content.authentication
-        # 自定义的缓存名称
-        name: authentication_info
     sql:

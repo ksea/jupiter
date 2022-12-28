@@ -7,6 +7,8 @@
     Description:
         
 """
+import json
+
 import pytest
 import time
 import allure
@@ -33,16 +35,18 @@ def work_login_init():
     获取登录的cookie
     :return:
     """
-
-    url = "https://www.wanandroid.com/user/login"
+    url = "https://ifs-app.qa.us.fiture.com/sso/email/login"
     data = {
-        "username": 18800000001,
-        "password": 123456
+        "email": "wen38@fiture.com",
+        "password": "test123!"
     }
-    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+    headers = {
+        'Content-Type': 'application/json',
+        '_APP_CLIENT_OBJECT': "{'appKey':'00100400123110000112111111111111','timezone': 'UTC-05:00'}"
+    }
     # 请求登录接口
 
-    res = requests.post(url=url, data=data, verify=True, headers=headers)
+    res = requests.post(url=url, json=data, verify=True, headers=headers)
     response_cookie = res.cookies
 
     cookies = ''
@@ -51,7 +55,28 @@ def work_login_init():
         # 拿到登录的cookie内容，cookie拿到的是字典类型，转换成对应的格式
         cookies += _cookie
         # 将登录接口中的cookie写入缓存中，其中login_cookie是缓存名称
-    CacheHandler.update_cache(cache_name='login_cookie', value=cookies)
+
+    content = json.loads(res.content)
+    CacheHandler.update_cache(cache_name='session_object', value=json.dumps(content["content"]["authentication"]))
+
+    # url = "https://www.wanandroid.com/user/login"
+    # data = {
+    #     "username": 18800000001,
+    #     "password": 123456
+    # }
+    # headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+    # # 请求登录接口
+    #
+    # res = requests.post(url=url, data=data, verify=True, headers=headers)
+    # response_cookie = res.cookies
+    #
+    # cookies = ''
+    # for k, v in response_cookie.items():
+    #     _cookie = k + "=" + v + ";"
+    #     # 拿到登录的cookie内容，cookie拿到的是字典类型，转换成对应的格式
+    #     cookies += _cookie
+    #     # 将登录接口中的cookie写入缓存中，其中login_cookie是缓存名称
+    # CacheHandler.update_cache(cache_name='login_cookie', value=cookies)
 
 
 def pytest_collection_modifyitems(items):

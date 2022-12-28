@@ -194,6 +194,7 @@ class Config(BaseModel):
     real_time_update_test_cases: bool = False
     host: Text
     app_host: Union[Text, None]
+    app_host1: Union[Text, None]
     access_key_id: Text
     access_key_security: Text
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time   : 2022-12-01 18:29:26
+# @Time   : 2022-12-02 11:40:18
 
 
 import allure
@@ -12,18 +12,18 @@ from utils.read_files_tools.regular_handler import regular
 from utils.requests_tool.teardown_handler import TearDownHandler
 
 
-case_id = ['ifs_sso_email_login_01']
+case_id = ['biz_portal_content_01']
 TestData = GetTestCase.case_data(case_id)
 re_data = regular(str(TestData))
 
 
-@allure.epic("ifs-api")
-@allure.feature("登陆")
-class TestLogin:
+@allure.epic("biz-portal-api")
+@allure.feature("Taurus")
+class TestTaurus:
 
-    @allure.story("登陆")
+    @allure.story("课程")
     @pytest.mark.parametrize('in_data', eval(re_data), ids=[i['detail'] for i in TestData])
-    def test_login(self, in_data, case_skip):
+    def test_taurus(self, in_data, case_skip):
         """
         :param :
         :return:
@@ -35,4 +35,4 @@ class TestLogin:
 
 
 if __name__ == '__main__':
-    pytest.main(['test_login.py', '-s', '-W', 'ignore:Module already imported:pytest.PytestWarning'])
+    pytest.main(['test_taurus.py', '-s', '-W', 'ignore:Module already imported:pytest.PytestWarning'])

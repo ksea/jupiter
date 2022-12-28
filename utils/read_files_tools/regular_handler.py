@@ -111,6 +111,12 @@ class Context:
         """获取app的host"""
         return config.app_host
 
+    @classmethod
+    def app_host1(cls) -> str:
+        from utils import config
+        """获取app的host"""
+        return config.app_host1
+
 
 def sql_json(js_path, res):
     """ 提取 sql中的 json 数据 """

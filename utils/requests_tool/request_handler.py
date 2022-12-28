@@ -8,6 +8,7 @@
         
 """
 import ast
+import json
 import os
 import random
 import time
@@ -17,6 +18,7 @@ import requests
 import urllib3
 from requests_toolbelt import MultipartEncoder
 from common.setting import ensure_path_sep
+from utils.cache_process.cache_handler import CacheHandler
 from utils.other_tools.models import RequestType
 from utils.logging_tool.log_decorator import log_decorator
 from utils.mysql_tool.mysql_handler import AssertExecution
@@ -26,6 +28,7 @@ from utils.read_files_tools.regular_handler import cache_regular
 from utils.requests_tool.set_current_request_cache import SetCurrentRequestCache
 from utils.other_tools.models import TestCase, ResponseData
 from utils import config
+from utils.requests_tool.signature import signature
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -163,6 +166,22 @@ class RequestHandler:
         _headers = self.check_headers_str_null(headers)
         _data = self.__yaml_case.data
         _url = self.__yaml_case.url
+
+        time_now = time.time()
+        expires = str(int(time_now + 1 * 600))
+        params = {
+            'method': method,
+            'path': _url,
+            'timeout': 60,
+            'expires': expires,
+            'json': json.dumps(_data, separators=(',', ':')),
+            'Content-Type': 'application/json'
+        }
+        signature_str = signature(config.access_key_id, config.access_key_security, config.host, **params)
+        print("++++++++++++++++1111111")
+        if _url == "https://portal.qa.us.fiture.com/adsd":
+            print(CacheHandler.get_cache("authentication_cache"))
+        print("++++++++++++++++")
         res = requests.request(
             method=method,
             url=cache_regular(str(_url)),

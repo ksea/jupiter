@@ -5,9 +5,10 @@ env: 测试环境
 tester_name: tzy
 
 # 域名1
-host: https://ifs-app.qa.us.fiture.com
+host: https://www.wanandroid.com
 # 域名2，支持多个域名配置
-app_host:
+app_host: https://ifs-app.qa.us.fiture.com
+app_host1: https://portal.qa.us.fiture.com
 
 access_key_id: "K19IgxLx62185gthjUM4ac7mfaoqsPl3"
 access_key_security: "ybwLjBdGl89jr7m3eVEmkEXTTC8sX41w"
