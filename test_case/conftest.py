@@ -35,9 +35,9 @@ def work_login_init():
     获取登录的cookie
     :return:
     """
-    url = "https://ifs-app.qa.us.fiture.com/sso/email/login"
+    url = "https://ifs-app.qa.us.asd.com/sso/email/login"
     data = {
-        "email": "wen38@fiture.com",
+        "email": "wen38@asd.com",
         "password": "test123!"
     }
     headers = {

@@ -21,7 +21,7 @@ ifs_sso_email_login_01:
     # 是否执行，空或者 true 都会执行
     is_run:
     data:
-      email: wen38@fiture.com
+      email: wen38@qwe.com
       password: test123!
     # 是否有依赖业务，为空或者false则表示没有
     dependence_case: False

@@ -179,7 +179,7 @@ class RequestHandler:
         }
         signature_str = signature(config.access_key_id, config.access_key_security, config.host, **params)
         print("++++++++++++++++1111111")
-        if _url == "https://portal.qa.us.fiture.com/adsd":
+        if _url == "https://portal.qa.us.asd.com/adsd":
             print(CacheHandler.get_cache("authentication_cache"))
         print("++++++++++++++++")
         res = requests.request(

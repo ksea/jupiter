@@ -7,8 +7,8 @@ tester_name: tzy
 # 域名1
 host: https://www.wanandroid.com
 # 域名2，支持多个域名配置
-app_host: https://ifs-app.qa.us.fiture.com
-app_host1: https://portal.qa.us.fiture.com
+app_host: https://ifs-app.qa.us.adf.com
+app_host1: https://portal.qa.us.asd.com
 
 access_key_id: "K19IgxLx62185gthjUM4ac7mfaoqsPl3"
 access_key_security: "ybwLjBdGl89jr7m3eVEmkEXTTC8sX41w"
